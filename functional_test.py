@@ -1,5 +1,5 @@
 from selenium import webdriver
-from seleium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import keys
 import time
 import unittest
 
