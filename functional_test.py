@@ -1,17 +1,17 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import Keys
 import time
 import unittest
+
 
 class NewVistorTest(unittest.TestCase):
 
     def setUp(self):
-        browser = webdriver.Firefox()
-
-    def tearDown(self):
-        self.browser.quit()
+        self.browser = webdriver.Firefox()
 
     def test_can_start_a_list_and_retrieve_it_later(self):
+        self.browser = webdriver.Firefox()
+
         # Edith has heard about a cool new online to-do app. She goes
         # to check out its homepage
         self.browser.get('http://localhost:8000')
@@ -38,9 +38,10 @@ class NewVistorTest(unittest.TestCase):
         time.sleep(1)
 
         table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_element_by_tag_name('tr')
-        self.asserTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertTrue(
+            any(row.text == '1: Buy peacock feathers' for row in rows),
+            "New to-do item did not apear in table"
         )
 
         # There is still a text box inviting her to add another item. She
@@ -58,3 +59,6 @@ class NewVistorTest(unittest.TestCase):
         # Satisfied, she goes back to sleep
 
         browser.quit()
+
+test = NewVistorTest()
+test.test_can_start_a_list_and_retrieve_it_later()
