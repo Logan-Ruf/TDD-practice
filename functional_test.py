@@ -1,5 +1,5 @@
 from selenium import webdriver
-from seleium.webdriver.common.keys import keys
+from selenium.webdriver.common.keys import keys
 import time
 import unittest
 
@@ -53,7 +53,8 @@ class NewVistorTest(unittest.TestCase):
         # that the site has generated a unique URL for her -- there is some
         # explanatory text to that effect.
 
-        # She visits that URL - her to-do list is still there.
+        # She visits tha
+        t URL - her to-do list is still there.
 
         # Satisfied, she goes back to sleep
 
